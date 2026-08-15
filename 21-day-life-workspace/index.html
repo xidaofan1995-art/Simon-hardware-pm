@@ -1,0 +1,83 @@
+<!doctype html>
+
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1,viewport-fit=cover" name="viewport"/>
+<meta content="#214E3E" name="theme-color"/>
+<meta content="21天早睡生活工作台 · 更广阔 · 更自由 · 更轻松" name="description"/>
+<link href="./manifest.webmanifest" rel="manifest"/>
+<link href="./icon-192.png" rel="apple-touch-icon"/>
+<title>21天早睡生活工作台</title>
+
+<link href="./styles.css" rel="stylesheet"/></head>
+<body>
+<div class="offline hidden" id="netBanner"></div>
+<div class="shell">
+<header class="topbar">
+<div>
+<div class="eyebrow" id="brandLine">Broader · Freer · Lighter</div>
+<div class="greeting" id="greeting"></div>
+<div class="date-line" id="todayText"></div>
+<div class="quote" id="quote"></div>
+</div>
+<div class="top-actions">
+<button class="pill hidden" id="installBtn">＋ <span data-i="install">安装到桌面</span></button>
+<button aria-label="切换语言" class="pill" id="langBtn">中 / EN</button>
+<button class="pill" id="settingsBtn">⚙︎ <span data-i="settings">设置</span></button>
+</div>
+</header>
+<section class="hero glass" id="today">
+<div class="hero-main">
+<div class="month-label" id="monthLabel"></div>
+<div class="eyebrow" data-i="monthlyMain">本月主线</div>
+<h2 id="goalTitle">早睡 &amp; 健身完成</h2>
+<p id="goalDesc"></p>
+</div>
+<div class="hero-side"><div class="hero-actions">
+<button class="pill" data-i="monthlyReview" id="historyBtn">月度回顾</button>
+<button aria-label="编辑本月主线" class="iconbtn" id="editGoalBtn">✎</button>
+</div></div>
+</section>
+<main class="grid">
+<section class="card glass" id="todoCard">
+<div class="card-head"><div><div class="card-title" data-i="todoTitle">每日待办</div><div class="card-sub" data-i="todoSub">把今天做小一点，完成就好。</div></div><div class="metric" id="todoPct">0%</div></div>
+<div class="date-nav"><button aria-label="上一天" id="todoPrev">←</button><strong id="todoDate"></strong><button aria-label="下一天" id="todoNext">→</button></div>
+<div class="progress"><span id="todoProgress" style="width:0%"></span></div>
+<div class="card-sub" id="todoCount"></div>
+<div id="todoList"></div>
+<div class="addline"><input class="input" data-ph="todoPlaceholder" id="todoInput" placeholder="添加今天要完成的事"/><button aria-label="添加待办" class="addbtn" id="todoAdd">＋</button></div>
+</section>
+<section class="card glass" id="sleepChallenge">
+<div class="card-head"><div><div class="card-title" data-i="sleepTitle">21天早睡挑战</div><div class="card-sub" data-i="sleepReward">21天12:00前睡就奖励自己一部手机</div></div><div><div class="streak-label" data-i="streak">连续早睡</div><div class="streak"><span id="sleepStreak">0</span> <small data-i="days">天</small></div></div></div>
+<div class="challenge-top"><div class="card-sub" id="sleepTotal"></div><div class="card-sub" id="sleepRange"></div></div>
+<div class="calendar" id="sleepCalendar"></div>
+</section>
+<section class="card glass" id="notes">
+<div class="card-head"><div><div class="card-title" data-i="notesTitle">灵感记录</div><div class="card-sub" data-i="notesSub">随笔、维修总结、心情与那些值得留下的念头。</div></div></div>
+<div class="note-form">
+<select class="select" id="noteCategory"></select><select class="select" id="noteMood"></select>
+<div class="textarea-wrap"><textarea class="textarea" data-ph="notePlaceholder" id="noteText" placeholder="今天有什么值得记下来？"></textarea></div>
+<div class="note-actions"><button class="savebtn" data-i="saveNote" id="saveNote">保存记录</button></div>
+</div>
+<div class="filters"><input class="input" data-ph="searchNotes" id="noteSearch" placeholder="搜索记录"/><select class="select" id="noteFilter"></select></div>
+<div class="timeline" id="timeline"></div>
+</section>
+<section class="card glass" id="fitnessChallenge">
+<div class="card-head"><div><div class="card-title">KEEP · 21 DAYS</div><div class="card-sub" data-i="fitnessSub">把运动变成身体记得的节奏。</div></div><div><div class="streak-label" data-i="fitnessStreak">连续运动</div><div class="streak"><span id="fitnessStreakNum">0</span> <small data-i="days">天</small></div></div></div>
+<div class="challenge-top"><div class="card-sub" id="fitnessTotal"></div><div class="card-sub" id="fitnessRange"></div></div>
+<div class="calendar" id="fitnessCalendar"></div>
+</section>
+<section class="card glass full" id="insights">
+<div class="card-head"><div><div class="card-title" data-i="creatorTitle">内容创作专家</div><div class="card-sub" data-i="creatorSub">仅在本机分析你的随笔主题、关键词与心情，不调用外部 AI。</div></div><div class="analysis-controls" id="rangeBtns"><button class="active" data-range="7">7D</button><button data-range="14">14D</button><button data-range="30">30D</button></div></div>
+<div class="analysis-grid"><div class="insight"><h4 data-i="keywords">高频关键词</h4><div class="chips" id="keywordChips"></div></div><div class="insight"><h4 data-i="moodTrend">情绪趋势</h4><div id="moodAnalysis"></div></div><div class="insight"><h4 data-i="ideas">建议选题</h4><div id="ideasList"></div></div></div>
+</section>
+</main>
+</div>
+<nav aria-label="mobile navigation" class="bottom-nav"><a href="#today"><span>☀︎</span><b data-i="navToday">今天</b></a><a href="#notes"><span>✎</span><b data-i="navNotes">记录</b></a><a href="#sleepChallenge"><span>✓</span><b data-i="navChallenge">打卡</b></a><a href="#insights"><span>◌</span><b data-i="navInsights">洞察</b></a></nav>
+<div aria-modal="true" class="modal hidden" id="modal" role="dialog"><div class="modal-card"><div class="modal-head"><h3 id="modalTitle"></h3><button class="close" id="modalClose">×</button></div><div id="modalBody"></div></div></div>
+<div class="toast hidden" id="toast"></div>
+<input accept="application/json" class="hidden" id="importFile" type="file"/>
+<script defer src="./core.js"></script><script defer src="./features.js"></script><script defer src="./app.js"></script>
+</body>
+</html>
